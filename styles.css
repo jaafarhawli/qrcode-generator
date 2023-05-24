@@ -62,9 +62,8 @@ header p{
   margin-top: 20px;
   font-size: 17px;
   background: #3498DB;
-  transition: 200ms ease-in-out;
+  transition: 100ms ease-in-out;
   scale: 1;
-  transition: transform 0.1s ease;
 }
 
 .form button:hover {
