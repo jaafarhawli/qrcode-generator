@@ -26,6 +26,25 @@ generateButton.addEventListener("click", () => {
     });
 });
 
+downloadButton.addEventListener("click", () => {
+  downloadButton.innerText = "Downloading...";
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  const qrImgWidth = qrImg.naturalWidth;
+  const qrImgHeight = qrImg.naturalHeight;
+  canvas.width = qrImgWidth;
+  canvas.height = qrImgHeight;
+  context.drawImage(qrImg, 0, 0, qrImgWidth, qrImgHeight);
+
+  const link = document.createElement("a");
+  canvas.toBlob(function (blob) {
+    link.href = URL.createObjectURL(blob);
+    link.download = "qr-code.png";
+    link.click();
+  });
+  downloadButton.innerText = "Download QR Code";
+});
+
 qrInput.addEventListener("keyup", () => {
   if (!qrInput.value.trim()) {
     wrapper.classList.remove("active");
