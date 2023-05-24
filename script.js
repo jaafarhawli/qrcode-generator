@@ -21,6 +21,7 @@ generateButton.addEventListener("click", () => {
         wrapper.classList.add("active");
         downloadButton.classList.add("active");
         generateButton.innerText = "Generate QR Code";
+        generateButton.disabled = true;
         URL.revokeObjectURL(objectURL);
       });
     });
@@ -43,6 +44,18 @@ downloadButton.addEventListener("click", () => {
     link.click();
   });
   downloadButton.innerText = "Download QR Code";
+});
+
+qrInput.addEventListener("input", () => {
+  if (!qrInput.value.trim() || qrInput.value.trim() === preValue) {
+    generateButton.disabled = true;
+  } else {
+    generateButton.disabled = false;
+  }
+  
+  if (!qrInput.value.trim()) {
+    downloadButton.classList.remove("active");
+  }
 });
 
 qrInput.addEventListener("keyup", () => {
